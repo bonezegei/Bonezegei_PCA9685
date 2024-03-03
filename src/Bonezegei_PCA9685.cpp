@@ -37,8 +37,10 @@ char Bonezegei_PCA9685::begin() {
 }
 
 void Bonezegei_PCA9685::setValue(uint8_t channel, int value) {
-  int value_ON = 4096 - value;
-  int value_OFF = 4095;
+  // int value_ON = 4096 - value;
+  // int value_OFF = 4095;
+  int value_ON = 1;
+  int value_OFF = value;
 
   write((ADDR_CHANNEL_BASE + (4 * channel)) + 1, (value_ON >> 8) & 0xff);   // ON_HIGH
   write((ADDR_CHANNEL_BASE + (4 * channel)), value_ON & 0xff);              // ON_LOW
