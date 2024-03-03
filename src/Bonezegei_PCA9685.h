@@ -9,12 +9,21 @@
 #include <Arduino.h>
 #include <Wire.h>
 
+#define ADDR_MODE1 0x01
+#define ADDR_MODE2 0x01
+#define ADDR_PRESCALE 0xFE
+#define ADDR_CHANNEL_BASE 0x06
+
 class Bonezegei_PCA9685 {
 public:
   Bonezegei_PCA9685(uint8_t addr);
 
   char begin();
   void setValue(uint8_t channel, int value);
+
+  //Set Frequency in Hertz
+  void setFrequency(int value);
+
 
   void write(uint8_t reg_addr, uint8_t data);
   uint8_t read(uint8_t reg_addr);
